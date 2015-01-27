@@ -17,8 +17,8 @@ public class PostureRecognition extends Activity implements SensorEventListener 
 
     public final static String EXTRA_MESSAGE = "com.example.sensefall.MESSAGE";
     public double ax,ay,az;
-    public double a_norm;
-    public int i=0;
+    public double a_norm,v_sum;
+    public int i=0,flag=0;
     static int BUFF_SIZE=50;
     static public double[] window = new double[BUFF_SIZE];
     double sigma=0.5,th=10,th1=5,th2=2;
@@ -58,6 +58,7 @@ public class PostureRecognition extends Activity implements SensorEventListener 
             ax=event.values[0];
             ay=event.values[1];
             az=event.values[2];
+            v_sum= Math.sqrt((ax*ax)+(ay*ay)+(az*az));
             AddData(ax,ay,az);
             posture_recognition(window,ay);
             SystemState(curr_state,prev_state);
@@ -77,16 +78,34 @@ public class PostureRecognition extends Activity implements SensorEventListener 
             }else{
                 curr_state="standing";
             }
+            flag=0;
 
         }else{
 
             if(zrc>th2){
                 curr_state="walking";
+                flag=0;
             }else{
+
                 curr_state="none";
+                if(v_sum<3)
+                {
+                    flag=1;
+                }
+                if(v_sum>17&&flag==1)
+                {
+                    flag =2;
+                }
+                if(v_sum>3&&v_sum<15&&flag==2)
+                {
+
+                    curr_state="fall";
+                }
             }
 
+
         }
+
 
 
 
