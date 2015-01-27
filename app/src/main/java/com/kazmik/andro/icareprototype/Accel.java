@@ -8,6 +8,7 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.Vibrator;
+import android.util.Log;
 import android.widget.TextView;
 
 public class Accel extends Activity implements SensorEventListener {
@@ -20,14 +21,17 @@ public class Accel extends Activity implements SensorEventListener {
     private float deltaXMax = 0;
     private float deltaYMax = 0;
     private float deltaZMax = 0;
+    private double vectormini = 10;
+    private double vectormaxi = 0;
 
     private float deltaX = 0;
     private float deltaY = 0;
     private float deltaZ = 0;
+    double vect;
 
     private float vibrateThreshold = 0;
 
-    private TextView currentX, currentY, currentZ, maxX, maxY, maxZ;
+    private TextView currentX, currentY, currentZ, maxX, maxY, maxZ ,vectorsum, vectormin, vectormax;
 
     public Vibrator v;
 
@@ -61,6 +65,9 @@ public class Accel extends Activity implements SensorEventListener {
         maxX = (TextView) findViewById(R.id.maxX);
         maxY = (TextView) findViewById(R.id.maxY);
         maxZ = (TextView) findViewById(R.id.maxZ);
+        vectorsum = (TextView) findViewById(R.id.vector);
+        vectormin = (TextView) findViewById(R.id.vectormin);
+        vectormax = (TextView) findViewById(R.id.vectormax);
     }
 
     //onResume() register the accelerometer for listening the events
@@ -116,6 +123,8 @@ public class Accel extends Activity implements SensorEventListener {
         currentX.setText(Float.toString(deltaX));
         currentY.setText(Float.toString(deltaY));
         currentZ.setText(Float.toString(deltaZ));
+        vect = Math.sqrt((deltaX * deltaX) + (deltaY * deltaY) + (deltaZ * deltaZ));
+        vectorsum.setText(String.valueOf(vect));
     }
 
     // display the max x,y,z accelerometer values
@@ -132,5 +141,15 @@ public class Accel extends Activity implements SensorEventListener {
             deltaZMax = deltaZ;
             maxZ.setText(Float.toString(deltaZMax));
         }
+        if(vectormini>vect){
+            Log.d("vectmin","inside vectore mini");
+            vectormini = vect;
+            vectormin.setText(String.valueOf(vectormini));
+        }
+        if(vect>vectormaxi){
+            vectormaxi = vect;
+            vectormax.setText(String.valueOf(vectormaxi));
+        }
+
     }
 }
