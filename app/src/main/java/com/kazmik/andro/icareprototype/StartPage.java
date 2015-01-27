@@ -11,7 +11,7 @@ import android.widget.Spinner;
 
 public class StartPage extends ActionBarActivity {
 
-    Button blue,accel,speech;
+    Button blue,accel,speech,posture;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,6 +19,7 @@ public class StartPage extends ActionBarActivity {
         blue = (Button)findViewById(R.id.bblue);
         speech = (Button)findViewById(R.id.bspeech);
         accel = (Button)findViewById(R.id.baccel);
+        posture = (Button)findViewById(R.id.bposture);
         accel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -37,6 +38,13 @@ public class StartPage extends ActionBarActivity {
                 startActivity(new Intent(StartPage.this, SpeechRecog.class));
             }
         });
+        posture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(StartPage.this, PostureRecognition.class));
+            }
+        });
+
     }
 
 

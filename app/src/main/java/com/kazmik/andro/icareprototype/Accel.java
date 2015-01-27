@@ -2,6 +2,7 @@ package com.kazmik.andro.icareprototype;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -9,6 +10,7 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 public class Accel extends Activity implements SensorEventListener {
@@ -28,6 +30,7 @@ public class Accel extends Activity implements SensorEventListener {
     private float deltaY = 0;
     private float deltaZ = 0;
     double vect;
+    View vi;
 
     private float vibrateThreshold = 0;
 

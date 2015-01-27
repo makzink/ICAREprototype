@@ -44,6 +44,10 @@
             android:name=".SpeechRecog"
             android:label="@string/title_activity_speech_recog" >
         </activity>
+        <activity
+            android:name=".PostureRecognition"
+            android:label="@string/title_activity_posture_recognition" >
+        </activity>
     </application>
 
 </manifest>

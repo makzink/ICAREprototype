@@ -36,4 +36,13 @@
         android:layout_below="@+id/baccel"
 
         android:layout_centerHorizontal="true" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Posture Recog"
+        android:id="@+id/bposture"
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/bspeech"
+
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

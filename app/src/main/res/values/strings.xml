@@ -8,5 +8,6 @@
     <string name="title_activity_blue_chat">BlueChat</string>
     <string name="title_activity_activity_recognition">Activity Recognition</string>
     <string name="title_activity_speech_recog">Speech Recognition</string>
+    <string name="title_activity_posture_recognition">Posture Recognition</string>
 
 </resources>

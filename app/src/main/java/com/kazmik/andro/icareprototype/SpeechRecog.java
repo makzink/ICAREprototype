@@ -81,7 +81,7 @@ public class SpeechRecog extends Activity implements TextToSpeech.OnInitListener
     /**
      * Handle the action of the button being clicked
      */
-    public void speakButtonClicked(View v)
+    public  void speakButtonClicked(View v)
     {
 
         hash.put(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID,
@@ -89,6 +89,7 @@ public class SpeechRecog extends Activity implements TextToSpeech.OnInitListener
         pause(1000);
         tts.speak("Did Something happen?", TextToSpeech.QUEUE_FLUSH, hash);
     }
+
 
     /**
      * Fire an intent to start the voice recognition activity.
