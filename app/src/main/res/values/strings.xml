@@ -9,5 +9,6 @@
     <string name="title_activity_activity_recognition">Activity Recognition</string>
     <string name="title_activity_speech_recog">Speech Recognition</string>
     <string name="title_activity_posture_recognition">Posture Recognition</string>
+    <string name="title_activity_main">Main Activity</string>
 
 </resources>
